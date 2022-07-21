@@ -1,18 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {NativeBaseProvider, StatusBar} from 'native-base';
-import {SignIn} from './src/screens/SignIn';
+
 import {THEME} from './src/styles/theme';
-import {Loading} from './src/components/Loading';
+
+import {Routes} from './src/routes';
 
 function App() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-  }, []);
-
   return (
     <NativeBaseProvider theme={THEME}>
       <StatusBar
@@ -20,7 +13,7 @@ function App() {
         backgroundColor="transparent"
         translucent
       />
-      {isLoading ? <Loading /> : <SignIn />}
+      <Routes />
     </NativeBaseProvider>
   );
 }
